@@ -8,6 +8,6 @@ Setup LLM using Ollama
 5. Test on main.py, and generate the result on the terminal.
 
 TODO:
-1. Setup Bot UI front end.
-2. Setup document input using langchain.
-3. paper recommandation system?
+1. Set up Bot UI front end.
+2. Set up document input using langchain.
+3. paper recommendation system?
