@@ -1,9 +1,5 @@
-from langchain_ollama.llms import OllamaLLM
+from langserve import RemoteRunnable
 
-model_id = 'qwen2-math:1.5b'
-
-model = OllamaLLM(model=model_id)
-
-result = model.invoke("What is 1+1?")
-
+remote_chain = RemoteRunnable("http://localhost:8000/chain/")
+result = remote_chain.invoke({"language": "italian", "text": "hi"})
 print(result)
