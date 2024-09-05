@@ -7,6 +7,11 @@ Setup LLM using Ollama
 4. Run sever.py, this will host LLM on http://localhost:8000/
 5. Test on main.py, and generate the result on the terminal.
 
+Setup React:
+1. Download nodejs
+2. cd client
+3. npm start 
+
 TODO:
 1. Set up Bot UI front end.
 2. Set up document input using langchain.
