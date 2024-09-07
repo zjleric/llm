@@ -1,22 +1,38 @@
 .App {
   text-align: center;
   display: flex;
+  background-color: #282c34;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.sidemenu {
-  width:240px;
+.side-menu {
+  width:260px;
+  padding: 10px;
+  background-color: #202123;
+}
+
+.side-menu-button {
+  padding: 12px;
   border: 1px solid white;
+  border-radius: 5px;
+  text-align: left;
+  transition: ease 0.07s all;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.side-menu-button-span {
+  position: relative;
+  padding-left: 6px;
+  padding-right: 10px;
+  top: -1px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.side-menu-button:hover {
+  background-color: rgb(255, 255, 255, 0.1);
 }
 
 .App-header {
@@ -34,14 +50,28 @@
   color: #61dafb;
 }
 
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chatbox {
+  flex: 1;
+  background-color: #343541;
+  position: relative;
 }
 
+.chat-input-holder {
+  padding: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.chat-input-textarea {
+  background-color: #40414f;
+  width: 90%;
+  border-radius: 5px;
+  padding: 12px;
+  color: white;
+  font-size: 1.25em;
+  border: none;
+  outline: none;
+  box-shadow: 5px 8px 4px 2px rgba(0, 0, 0, 0.5);
+}
