@@ -1,14 +1,17 @@
 from langchain_ollama.llms import OllamaLLM
-from fastapi import FastAPI
-from langserve import add_routes
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-import uvicorn
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+
+
+app = Flask(__name__)
+CORS(app)
 
 MODEL_ID = 'qwen2-math:1.5b'
 
 # 1. Create prompt template
-system_template = "Translate the following into {language}:"
+system_template = "Solve the following Math Problem:"
 prompt_template = ChatPromptTemplate.from_messages([
     ('system', system_template),
     ('user', '{text}')
@@ -24,21 +27,14 @@ parser = StrOutputParser()
 chain = prompt_template | model | parser
 
 
-# 4. App definition
-app = FastAPI(
-  title="LangChain Server",
-  version="1.0",
-  description="A simple API server using LangChain's Runnable interfaces",
-)
-
 # 5. Adding chain route
-add_routes(
-    app,
-    chain,
-    path="/chain",
-)
+@app.route('/', methods=['POST'])
+def post():
+    data = request.data.decode('utf-8')
+    response = {"message": chain.invoke({'text': data})}
+    return jsonify(response)
 
-if __name__ == "__main__":
-    import uvicorn
 
-    uvicorn.run(app, host="localhost", port=8000)
+if __name__ == '__main__':
+    app.run(debug=True)
+    app.run(host='localhost', port=8000)
