@@ -16,7 +16,7 @@ function App() {
     setChatLog(newChatLog);
     setInput("");
 
-    const url = "http://127.0.0.1:5000";
+    const url = "http://localhost:8000";
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -29,7 +29,6 @@ function App() {
     
     const data = await response.json();
     const message = data.message;
-    console.log(message);
 
     newChatLog = [...newChatLog, {user: 'llm', message: message}];
     setChatLog(newChatLog);
